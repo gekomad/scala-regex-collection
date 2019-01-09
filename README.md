@@ -1,9 +1,4 @@
-
-
-
-[![Build Status](https://travis-ci.com/gekomad/scala-regex-collection.svg?branch=master)](https://travis-ci.com/gekomad/scala-regex-collection)
-
-[![codecov.io](http://codecov.io/github/gekomad/scala-regex-collection/coverage.svg?branch=master)](http://codecov.io/github/gekomad/scala-regex-collection?branch=master)
+[![Build Status](https://travis-ci.com/gekomad/scala-regex-collection.svg?branch=master)](https://travis-ci.com/gekomad/scala-regex-collection) [![codecov.io](http://codecov.io/github/gekomad/scala-regex-collection/coverage.svg?branch=master)](http://codecov.io/github/gekomad/scala-regex-collection?branch=master)
 
 
 Scala regex collection
