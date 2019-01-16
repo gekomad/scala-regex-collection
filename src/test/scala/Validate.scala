@@ -52,24 +52,6 @@ class Validate extends FunSuite {
     assert(validate[HtmlHref]("""href="bad example"""") == None)
   }
 
-  test("HtmlImg") {
-    import com.github.gekomad.regexcollection.Validate.validate
-    import com.github.gekomad.regexcollection.HtmlImg
-
-    assert(
-      validate[HtmlImg]("""<img alt="bar" height="178" src="https://www.aa.it/cce.jpg" width="316"/>"""") == Some("""<img alt="bar" height="178" src="https://www.aa.it/cce.jpg" width="316"/>"""")
-    )
-    assert(validate[HtmlImg]("""xxx"""") == Some("""xxx""""))
-    assert(validate[HtmlImg]("""xxx"""") == Some("""xxx""""))
-    assert(validate[HtmlImg]("""<a href="http://www.aaa.it/pxx/""""") == None)
-    assert(
-      validate[HtmlImg]("""<img alt="bar" height="178" src="https://www.aa.it/cce.jpg" width="316"/>"""") == Some("""<img alt="bar" height="178" src="https://www.aa.it/cce.jpg" width="316"/>"""")
-    )
-    assert(validate[HtmlImg]("""<h2 class="entry-title">"""") == Some("""<h2 class="entry-title">""""))
-    assert(validate[HtmlImg]("aaaa") == None)
-
-  }
-
   test("Email simple") {
     import com.github.gekomad.regexcollection.Validate.validate
     { //custom email pattern
