@@ -1,6 +1,6 @@
 name := "scala-regex-collection"
 
-version := "0.0.1"
+version := "0.0.1" //TODO anche in readme e bumpversion
 
 scalaVersion := "2.12.8"
 organization := "com.github.gekomad"
