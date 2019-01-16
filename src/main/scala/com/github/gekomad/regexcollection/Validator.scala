@@ -94,7 +94,6 @@ trait AsciiString
 trait Celsius
 trait Fahrenheit
 trait HtmlHref
-trait HtmlImg
 
 object Collection {
 
@@ -159,7 +158,6 @@ object Collection {
     Validator[Email]("""[a-zA-Z0-9\.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*""")
 
   implicit val validatorEmailSimple: Validator[EmailSimple] = Validator[EmailSimple](""".+@.+\..+""")
-  implicit val validatorHtmlImg: Validator[HtmlImg]         = Validator[HtmlImg]("""<img>.*<\/img>|<img.*[<\/img>|\/>]+""")
   implicit val validatorHref: Validator[HtmlHref]           = Validator[HtmlHref]("""href=[\"\'](http[s]?:\/\/|\.\/|\/)?\w+(\.\w+)*(\/\w+(\.\w+)?)*(\/|\?\w*=\w*(&\w*=\w*)*)?[\"\']""")
   implicit val validatorEmail1: Validator[Email1]           = Validator[Email1]("""[_&A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*(\.[A-Za-z]{2,})""")
   implicit val validatorFacebook: Validator[Facebook]       = Validator[Facebook]("""https:\/\/(www|[a-zA-Z]{2}-[a-zA-Z]{2})\.facebook\.com\/(pages\/[a-zA-Z0-9\.-]+\/[0-9]+|[a-zA-Z0-9\.-]+)[\/]?""")
