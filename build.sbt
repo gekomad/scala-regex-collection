@@ -1,13 +1,12 @@
 name := "scala-regex-collection"
 
-version := "0.1.0-M1"
+version := "1.0.0"
 
-scalaVersion := "2.13.0-M5"
+scalaVersion := "2.13.0"
 organization := "com.github.gekomad"
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.6-SNAP6" % Test
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.1.0-SNAP13" % Test
 
-
-crossScalaVersions := Seq("2.10.7", "2.11.12", "2.12.6", "2.12.8","2.13.0-M5")
+crossScalaVersions := Seq("2.10.7", "2.11.12", "2.12.6", "2.12.8","2.13.0")
 
 publishTo := sonatypePublishTo.value
 
