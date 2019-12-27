@@ -1,6 +1,6 @@
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
-class FindFirst extends FunSuite {
+class FindFirst extends AnyFunSuite {
 
   test("Email") {
     import com.github.gekomad.regexcollection.Email
@@ -71,5 +71,11 @@ class FindFirst extends FunSuite {
     implicit val myValidator = Validator[Bar]("""Bar@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*""")
     assert(findFirstIgnoreCase[Bar]("bar abc@google.com hi hello bar@yahoo.com 123 Bar@foo.com") == Some("bar@yahoo.com"))
     assert(findFirst[Bar]("bar abc@google.com hi hello bar@yahoo.com 123 Bar@foo.com") == Some("Bar@foo.com"))
+  }
+
+  test("Comments") {
+    import com.github.gekomad.regexcollection.Comments
+    import com.github.gekomad.regexcollection.Validate.findFirst
+    assert(findFirst[Comments]("/*foo*/ bar /*baz*/ 10%  dg 55% ") == Some("/*foo*/"))
   }
 }

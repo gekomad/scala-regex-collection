@@ -6,13 +6,13 @@ import scala.util.Try
 import scala.util.matching.Regex
 
 object Validate {
-  implicit def validateIgnoreCase[A](a: String)(implicit f: Validator[A]): Option[String]  = f.validateIgnoreCase(a)
-  implicit def validate[A](a: String)(implicit f: Validator[A]): Option[String]            = f.validateCaseSensitive(a)
-  implicit def regexp[A](implicit f: Validator[A]): String                                 = f.regexp
-  implicit def findAllIgnoreCase[A](a: String)(implicit f: Validator[A]): List[String]     = f.findAllIgnoreCase(a)
-  implicit def findAll[A](a: String)(implicit f: Validator[A]): List[String]               = f.findAllCaseSensitive(a)
-  implicit def findFirstIgnoreCase[A](a: String)(implicit f: Validator[A]): Option[String] = f.findFirstIgnoreCase(a)
-  implicit def findFirst[A](a: String)(implicit f: Validator[A]): Option[String]           = f.findFirstCaseSensitive(a)
+  def validateIgnoreCase[A](a: String)(implicit f: Validator[A]): Option[String]  = f.validateIgnoreCase(a)
+  def validate[A](a: String)(implicit f: Validator[A]): Option[String]            = f.validateCaseSensitive(a)
+  def regexp[A](implicit f: Validator[A]): String                                 = f.regexp
+  def findAllIgnoreCase[A](a: String)(implicit f: Validator[A]): List[String]     = f.findAllIgnoreCase(a)
+  def findAll[A](a: String)(implicit f: Validator[A]): List[String]               = f.findAllCaseSensitive(a)
+  def findFirstIgnoreCase[A](a: String)(implicit f: Validator[A]): Option[String] = f.findFirstIgnoreCase(a)
+  def findFirst[A](a: String)(implicit f: Validator[A]): Option[String]           = f.findFirstCaseSensitive(a)
 }
 
 trait Email
@@ -95,6 +95,8 @@ trait Celsius
 trait Fahrenheit
 trait HtmlHref
 
+trait Comments
+
 object Collection {
 
   import java.time._
@@ -107,16 +109,16 @@ object Collection {
     def findAllCaseSensitive(a: String): List[String]
     def findFirstIgnoreCase(a: String): Option[String]
     def findFirstCaseSensitive(a: String): Option[String]
-    val regexp: String
+    def regexp: String
   }
 
   object Validator {
     def apply[A](reg: String): Validator[A] = new Validator[A] {
       override val regexp: String = reg
       val regex: Regex            = reg.r
-      val regexIgn: Regex         = ("(?i)" + reg).r
-      val regexExact: Regex       = ('^' + reg + '$').r
-      val regexExactIgn: Regex    = ("^(?i)" + reg + '$').r
+      val regexIgn: Regex         = s"(?i)$reg".r
+      val regexExact: Regex       = s"^$reg$$".r
+      val regexExactIgn: Regex    = s"^(?i)$reg$$".r
 
       override def validateIgnoreCase(a: String): Option[String]    = regexExactIgn.findFirstMatchIn(a).map(_ => a)
       override def validateCaseSensitive(a: String): Option[String] = regexExact.findFirstMatchIn(a).map(_ => a)
@@ -261,6 +263,7 @@ object Collection {
   implicit val validatorTime: Validator[Time] =
     Validator[Time]("""(([0-9]|[0-1][0-9]|[2][0-3]):([0-5][0-9])(\s{0,1})(AM|PM|am|pm|aM|Am|pM|Pm{2,2})$)|(^([0-9]|[1][0-9]|[2][0-3])(\s{0,1})(AM|PM|am|pm|aM|Am|pM|Pm{2,2}))""")
 
+  implicit val validatorComment: Validator[Comments]            = Validator[Comments]("""(\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+\/)""")
   implicit val validatorLocalDateTime: Validator[LocalDateTime] = Validator[LocalDateTime]((a: String) => Try(LocalDateTime.parse(a, ISO_LOCAL_DATE_TIME)).toOption.map(_ => a))
 
   implicit val validatorLocalDate: Validator[LocalDate] = Validator[LocalDate]((a: String) => Try(LocalDate.parse(a, ISO_LOCAL_DATE)).toOption.map(_ => a))

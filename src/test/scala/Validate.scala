@@ -1,6 +1,8 @@
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
-class Validate extends FunSuite {
+import scala.util.{Failure, Success}
+
+class Validate extends AnyFunSuite {
 
   test("Email") {
     import com.github.gekomad.regexcollection.Validate.{regexp, validate}
@@ -954,17 +956,30 @@ class Validate extends FunSuite {
     import com.github.gekomad.regexcollection.Collection.Validator
     import scala.util.Try
 
-    implicit val validator = Validator[Foo]((a: String) => {
-      val even = for {
-        i <- Try(a.toInt)
-        if (i % 2 == 0)
-      } yield Some(a)
-      even.getOrElse(None)
-    })
+    implicit val validator = Validator[Foo]((a: String) =>
+      Try(a.toInt) match {
+        case Failure(_) => None
+        case Success(i) => if (i % 2 == 0) Option(a) else None
+      }
+    )
 
     assert(validate[Foo]("42") == Some("42"))
+    assert(validate[Foo]("21") == None)
     assert(validate[Foo]("hello") == None)
 
+  }
+
+  test("Comments") {
+    import com.github.gekomad.regexcollection.Comments
+    import com.github.gekomad.regexcollection.Validate.validate
+    assert(validate[Comments]("hi") == None)
+    assert(validate[Comments]("/*hi") == None)
+    assert(validate[Comments]("/*hi*/") == Some("/*hi*/"))
+    assert(validate[Comments](
+      """/*hi
+        |foo * */""".stripMargin) == Some(
+      """/*hi
+        |foo * */""".stripMargin))
   }
 
 }

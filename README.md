@@ -1,12 +1,11 @@
-[![Build Status](https://travis-ci.com/gekomad/scala-regex-collection.svg?branch=master)](https://travis-ci.com/gekomad/scala-regex-collection) [![codecov.io](http://codecov.io/github/gekomad/scala-regex-collection/coverage.svg?branch=master)](http://codecov.io/github/gekomad/scala-regex-collection?branch=master)
-
+[![Build Status](https://travis-ci.com/gekomad/scala-regex-collection.svg?branch=master)](https://travis-ci.com/gekomad/scala-regex-collection)
 
 Scala regex collection
 =====================
 
 Scala-regex-collection is a pure scala regex collection
 ## Add the library to your project
-`libraryDependencies += "com.github.gekomad" %% "scala-regex-collection" % "1.0.0"`
+`libraryDependencies += "com.github.gekomad" %% "scala-regex-collection" % "1.0.1"`
 
  ## Using Library
 
@@ -123,6 +122,9 @@ Coordinates
 - [Coordinate1](https://github.com/gekomad/scala-regex-collection/wiki/Coordinate1)  (45°23'36.0" N 10°33'48.0" E)
 - [Coordinate2](https://github.com/gekomad/scala-regex-collection/wiki/Coordinate2)  (12:12:12.223546"N - 15:17:6"S - 12°30'23.256547"S)
 
+Programming
+
+- [Comments](https://github.com/gekomad/scala-regex-collection/wiki/Comments)  (/* foo */)
 
  ## Use the library
 
