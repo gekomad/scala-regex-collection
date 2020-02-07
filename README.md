@@ -13,7 +13,6 @@ Scala-regex-collection is a pure scala regex collection
 
 You can use defined patterns or you can define yours
 
-href
 Email
 
 - [Email](https://github.com/gekomad/scala-regex-collection/wiki/Email)  ($abc@</span>def</span>.c)
