@@ -125,6 +125,15 @@ Programming
 
 - [Comments](https://github.com/gekomad/scala-regex-collection/wiki/Comments)  (/* foo */)
 
+Credit Cards
+
+- [Visa](https://github.com/gekomad/scala-regex-collection/wiki/CreditCards)  (/* 4111111111111 */)
+- [Master Card](https://github.com/gekomad/scala-regex-collection/wiki/CreditCards)  (/* 5500000000000004 */)
+- [American Express](https://github.com/gekomad/scala-regex-collection/wiki/CreditCards)  (/* 340000000000009 */)
+- [Diners Club](https://github.com/gekomad/scala-regex-collection/wiki/CreditCards)  (/* 30000000000004 */)
+- [Discover](https://github.com/gekomad/scala-regex-collection/wiki/CreditCards)  (/* 6011000000000004 */)
+- [JCB](https://github.com/gekomad/scala-regex-collection/wiki/CreditCards)  (/* 3588000000000009 */)
+
  ## Use the library
 
 

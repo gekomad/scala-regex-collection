@@ -956,10 +956,11 @@ class Validate extends AnyFunSuite {
     import com.github.gekomad.regexcollection.Collection.Validator
     import scala.util.Try
 
-    implicit val validator = Validator[Foo]((a: String) =>
-      Try(a.toInt) match {
-        case Failure(_) => None
-        case Success(i) => if (i % 2 == 0) Option(a) else None
+    implicit val validator = Validator[Foo](
+      (a: String) =>
+        Try(a.toInt) match {
+          case Failure(_) => None
+          case Success(i) => if (i % 2 == 0) Option(a) else None
       }
     )
 
@@ -975,11 +976,55 @@ class Validate extends AnyFunSuite {
     assert(validate[Comments]("hi") == None)
     assert(validate[Comments]("/*hi") == None)
     assert(validate[Comments]("/*hi*/") == Some("/*hi*/"))
-    assert(validate[Comments](
-      """/*hi
-        |foo * */""".stripMargin) == Some(
-      """/*hi
+    assert(validate[Comments]("""/*hi
+        |foo * */""".stripMargin) == Some("""/*hi
         |foo * */""".stripMargin))
+  }
+
+  test("CreditCardVisa") {
+    import com.github.gekomad.regexcollection.CreditCardVisa
+    import com.github.gekomad.regexcollection.Validate.validate
+    assert(validate[CreditCardVisa]("4111x") == None)
+    assert(validate[CreditCardVisa]("411111a111111") == None)
+    assert(validate[CreditCardVisa]("4111111111111111") == Some("4111111111111111"))
+    assert(validate[CreditCardVisa]("4111111111111") == Some("4111111111111"))
+  }
+
+  test("CreditCarMasterCard") {
+    import com.github.gekomad.regexcollection.CreditCardMasterCard
+    import com.github.gekomad.regexcollection.Validate.validate
+    assert(validate[CreditCardMasterCard]("4111x") == None)
+    assert(validate[CreditCardMasterCard]("550000000a000004") == None)
+    assert(validate[CreditCardMasterCard]("5500000000000004") == Some("5500000000000004"))
+  }
+
+  test("CreditCarAmericanExpress") {
+    import com.github.gekomad.regexcollection.CreditCardAmericanExpress
+    import com.github.gekomad.regexcollection.Validate.validate
+    assert(validate[CreditCardAmericanExpress]("4111x") == None)
+    assert(validate[CreditCardAmericanExpress]("140000000000009") == None)
+    assert(validate[CreditCardAmericanExpress]("340000000000009") == Some("340000000000009"))
+  }
+
+  test("CreditCarDinersClub") {
+    import com.github.gekomad.regexcollection.CreditCardinersClub
+    import com.github.gekomad.regexcollection.Validate.validate
+    assert(validate[CreditCardinersClub]("4111x") == None)
+    assert(validate[CreditCardinersClub]("30000000000004") == Some("30000000000004"))
+  }
+
+  test("CreditCardDiscover") {
+    import com.github.gekomad.regexcollection.CreditCardDiscover
+    import com.github.gekomad.regexcollection.Validate.validate
+    assert(validate[CreditCardDiscover]("4111x") == None)
+    assert(validate[CreditCardDiscover]("6011000000000004") == Some("6011000000000004"))
+  }
+
+  test("CreditCardJCB") {
+    import com.github.gekomad.regexcollection.CreditCardJCB
+    import com.github.gekomad.regexcollection.Validate.validate
+    assert(validate[CreditCardJCB]("4111x") == None)
+    assert(validate[CreditCardJCB]("3588000000000009") == Some("3588000000000009"))
   }
 
 }
