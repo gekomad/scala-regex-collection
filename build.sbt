@@ -7,7 +7,7 @@ organization := "com.github.gekomad"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.0-M2" % Test
 
-crossScalaVersions := Seq("2.10.7", "2.11.12", "2.12.6", "2.12.8", "2.13.0", "2.13.1")
+crossScalaVersions := Seq("2.11.12", "2.12.6", "2.12.8", "2.13.0", "2.13.1")
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -23,3 +23,20 @@ scalacOptions ++= Seq(
 
 publishTo := sonatypePublishTo.value
 
+// js
+enablePlugins(ScalaJSPlugin)
+scalaJSUseMainModuleInitializer := false
+
+//lazy val bar =
+//// select supported platforms
+//  crossProject(JSPlatform, JVMPlatform)
+//    .crossType(CrossType.Pure) // [Pure, Full, Dummy], default: CrossType.Full
+//    .settings()
+//    .jsSettings(/* ... */) // defined in sbt-scalajs-crossproject
+//    .jvmSettings(/* ... */)
+//
+//
+//// Optional in sbt 1.x (mandatory in sbt 0.13.x)
+//lazy val barJS     = bar.js
+//lazy val barJVM    = bar.jvm
+//
