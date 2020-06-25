@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scala regex collection</title>
+     <script type="text/javascript" src="./scala-regex-collection-opt.js"></script>
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .top-container {
+    background-color: #f1f1f1;
+    padding: 30px;
+    text-align: center;
+  }
+
+  .header {
+    padding: 10px 16px;
+    background: #555;
+    color: #f1f1f1;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  .sticky + .content {
+    padding-top: 102px;
+  }
+  textarea
+{
+  width:100%;
+}
+a:link {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+</style>
+</head>
+<body>
+
+
+
+<div class="header" id="myHeader">
+    <a href="https://github.com/gekomad/scala-regex-collection">Scala-regex-collection</a>
+    <h2>Write a text to validate<br>
+        <textarea id="textarea1" oninput="calc(document.getElementById('textarea1').value)" onpaste="calc(document.getElementById('textarea1').value)"  name="textarea1" rows="4" ></textarea></h2>
+</div>
+
+<div class="content">
+    <div class="row">
+        <div class="column" style="background-color:#aaa;">
+            <h2>Validate</h2>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/24-Hours-time"  target="_blank">validateTime24</a> <div id="validateTime24"></div>   
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ApacheError"     target="_blank">validateApacheError</a>    <div id="validateApacheError"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/AsciiString"     target="_blank">validateAsciiString</a>    <div id="validateAsciiString"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/AZString"     target="_blank">validateAZString</a>    <div id="validateAZString"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Bitcon-Address"     target="_blank">validateBitcoinAdd</a>    <div id="validateBitcoinAdd"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Celsius"     target="_blank">validateCelsius</a>    <div id="validateCelsius"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Comments"     target="_blank">validateComments</a>    <div id="validateComments"></div>   
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Coordinate"     target="_blank">validateCoordinate</a>    <div id="validateCoordinate"></div>   
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Coordinate1"     target="_blank">validateCoordinate1</a>    <div id="validateCoordinate1"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Coordinate2"     target="_blank">validateCoordinate2</a>    <div id="validateCoordinate2"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/CreditCards"     target="_blank">validateCreditCardVisa</a>    <div id="validateCreditCardVisa"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Crontab-expression"     target="_blank">validateCron</a>    <div id="validateCron"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/DMY"     target="_blank">validateDMY</a>    <div id="validateDMY"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/DMY2"     target="_blank">validateDMY2</a>    <div id="validateDMY2"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/DMY3"     target="_blank">validateDMY3</a>    <div id="validateDMY3"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/DMY4"     target="_blank">validateDMY4</a>    <div id="validateDMY4"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Email"     target="_blank">validateEmail</a>    <div id="validateEmail"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Email1"     target="_blank">validateEmail1</a>    <div id="validateEmail1"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/EmailSimple"     target="_blank">validateEmailSimple</a>    <div id="validateEmailSimple"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/EurCurrency"     target="_blank">validateEurCurrency</a>    <div id="validateEurCurrency"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Facebook"     target="_blank">validateFacebook</a>    <div id="validateFacebook"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Fahrenheit"     target="_blank">validateFahrenheit</a>    <div id="validateFahrenheit"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/GermanStreet"     target="_blank">validateGermanStreet</a>    <div id="validateGermanStreet"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/HEX"     target="_blank">validateHEX</a>    <div id="validateHEX"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/IP"     target="_blank">validateIP</a>    <div id="validateIP"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/IP_6"     target="_blank">validateIP_6</a>    <div id="validateIP_6"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Italian-fiscal-code"     target="_blank">validateItalianFiscalCode</a>    <div id="validateItalianFiscalCode"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianIban"     target="_blank">validateItalianIban</a>    <div id="validateItalianIban"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianMobilePhone"     target="_blank">validateItalianMobilePhone</a>    <div id="validateItalianMobilePhone"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianPhone"     target="_blank">validateItalianPhone</a>    <div id="validateItalianPhone"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianVAT"     target="_blank">validateItalianVAT</a>    <div id="validateItalianVAT"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianZipCode"     target="_blank">validateItalianZipCode</a>    <div id="validateItalianZipCode"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MACAddress"     target="_blank">validateMACAddress</a>    <div id="validateMACAddress"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MD5"     target="_blank">validateMD5</a>    <div id="validateMD5"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MDY"     target="_blank">validateMDY</a>    <div id="validateMDY"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MDY2"     target="_blank">validateMDY2</a>    <div id="validateMDY2"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MDY3"     target="_blank">validateMDY3</a>    <div id="validateMDY3"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MDY4"     target="_blank">validateMDY4</a>    <div id="validateMDY4"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/NotASCII"     target="_blank">validateNotASCII</a>    <div id="validateNotASCII"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Number1"     target="_blank">validateNumber1</a>    <div id="validateNumber1"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Percentage"     target="_blank">validatePercentage</a>    <div id="validatePercentage"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Scientific"     target="_blank">validateScientific</a>    <div id="validateScientific"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/SHA256"     target="_blank">validateSHA256</a>    <div id="validateSHA256"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Signed"     target="_blank">validateSigned</a>    <div id="validateSigned"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/SingleChar"     target="_blank">validateSingleChar</a>    <div id="validateSingleChar"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/SingleNumber"     target="_blank">validateSingleNumber</a>    <div id="validateSingleNumber"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/StringAndNumber"     target="_blank">validateStringAndNumber</a>    <div id="validateStringAndNumber"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Twitter"     target="_blank">validateTwitter</a>    <div id="validateTwitter"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Unsigned32"     target="_blank">validateUnsigned32</a>    <div id="validateUnsigned32"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/URLs"     target="_blank">validateURL</a>    <div id="validateURL"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/US-phone-number"     target="_blank">validateUSphoneNumber</a>    <div id="validateUSphoneNumber"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USD-Currency"     target="_blank">validateUsdCurrency</a>    <div id="validateUsdCurrency"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USstates"     target="_blank">validateUSstates</a>    <div id="validateUSstates"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USstates1"     target="_blank">validateUSstates1</a>    <div id="validateUSstates1"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USstreetNumber"     target="_blank">validateUSstreetNumber</a>    <div id="validateUSstreetNumber"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USstreets"     target="_blank">validateUSstreets</a>    <div id="validateUSstreets"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USZipCode"     target="_blank">validateUSZipCode</a>    <div id="validateUSZipCode"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/UUID"     target="_blank">validateUUID</a>    <div id="validateUUID"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/YenCurrency"     target="_blank">validateYenCurrency</a>    <div id="validateYenCurrency"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Youtube"     target="_blank">validateYoutube</a>    <div id="validateYoutube"></div>
+        </div>
+        <div class="column" style="background-color:#bbb;">
+            <h2>Find first</h2>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/24-Hours-time"  target="_blank">findFirstTime24</a> <div id="findFirstTime24"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ApacheError"     target="_blank">findFirstApacheError</a>    <div id="findFirstApacheError"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/AsciiString"     target="_blank">findFirstAsciiString</a>    <div id="findFirstAsciiString"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/AZString"     target="_blank">findFirstAZString</a>    <div id="findFirstAZString"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Bitcon-Address"     target="_blank">findFirstBitcoinAdd</a>    <div id="findFirstBitcoinAdd"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Celsius"     target="_blank">findFirstCelsius</a>    <div id="findFirstCelsius"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Comments"     target="_blank">findFirstComments</a>    <div id="findFirstComments"></div>   
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Coordinate"     target="_blank">findFirstCoordinate</a>    <div id="findFirstCoordinate"></div>   
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Coordinate1"     target="_blank">findFirstCoordinate1</a>    <div id="findFirstCoordinate1"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Coordinate2"     target="_blank">findFirstCoordinate2</a>    <div id="findFirstCoordinate2"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/CreditCards"     target="_blank">findFirstCreditCardVisa</a>    <div id="findFirstCreditCardVisa"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Crontab-expression"     target="_blank">findFirstCron</a>    <div id="findFirstCron"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/DMY"     target="_blank">findFirstDMY</a>    <div id="findFirstDMY"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/DMY2"     target="_blank">findFirstDMY2</a>    <div id="findFirstDMY2"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/DMY3"     target="_blank">findFirstDMY3</a>    <div id="findFirstDMY3"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/DMY4"     target="_blank">findFirstDMY4</a>    <div id="findFirstDMY4"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Email"     target="_blank">findFirstEmail</a>    <div id="findFirstEmail"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Email1"     target="_blank">findFirstEmail1</a>    <div id="findFirstEmail1"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/EmailSimple"     target="_blank">findFirstEmailSimple</a>    <div id="findFirstEmailSimple"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/EurCurrency"     target="_blank">findFirstEurCurrency</a>    <div id="findFirstEurCurrency"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Facebook"     target="_blank">findFirstFacebook</a>    <div id="findFirstFacebook"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Fahrenheit"     target="_blank">findFirstFahrenheit</a>    <div id="findFirstFahrenheit"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/GermanStreet"     target="_blank">findFirstGermanStreet</a>    <div id="findFirstGermanStreet"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/HEX"     target="_blank">findFirstHEX</a>    <div id="findFirstHEX"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/IP"     target="_blank">findFirstIP</a>    <div id="findFirstIP"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/IP_6"     target="_blank">findFirstIP_6</a>    <div id="findFirstIP_6"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Italian-fiscal-code"     target="_blank">findFirstItalianFiscalCode</a>    <div id="findFirstItalianFiscalCode"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianIban"     target="_blank">findFirstItalianIban</a>    <div id="findFirstItalianIban"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianMobilePhone"     target="_blank">findFirstItalianMobilePhone</a>    <div id="findFirstItalianMobilePhone"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianPhone"     target="_blank">findFirstItalianPhone</a>    <div id="findFirstItalianPhone"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianVAT"     target="_blank">findFirstItalianVAT</a>    <div id="findFirstItalianVAT"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianZipCode"     target="_blank">findFirstItalianZipCode</a>    <div id="findFirstItalianZipCode"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MACAddress"     target="_blank">findFirstMACAddress</a>    <div id="findFirstMACAddress"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MD5"     target="_blank">findFirstMD5</a>    <div id="findFirstMD5"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MDY"     target="_blank">findFirstMDY</a>    <div id="findFirstMDY"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MDY2"     target="_blank">findFirstMDY2</a>    <div id="findFirstMDY2"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MDY3"     target="_blank">findFirstMDY3</a>    <div id="findFirstMDY3"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MDY4"     target="_blank">findFirstMDY4</a>    <div id="findFirstMDY4"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/NotASCII"     target="_blank">findFirstNotASCII</a>    <div id="findFirstNotASCII"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Number1"     target="_blank">findFirstNumber1</a>    <div id="findFirstNumber1"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Percentage"     target="_blank">findFirstPercentage</a>    <div id="findFirstPercentage"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Scientific"     target="_blank">findFirstScientific</a>    <div id="findFirstScientific"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/SHA256"     target="_blank">findFirstSHA256</a>    <div id="findFirstSHA256"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Signed"     target="_blank">findFirstSigned</a>    <div id="findFirstSigned"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/SingleChar"     target="_blank">findFirstSingleChar</a>    <div id="findFirstSingleChar"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/SingleNumber"     target="_blank">findFirstSingleNumber</a>    <div id="findFirstSingleNumber"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/StringAndNumber"     target="_blank">findFirstStringAndNumber</a>    <div id="findFirstStringAndNumber"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Twitter"     target="_blank">findFirstTwitter</a>    <div id="findFirstTwitter"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Unsigned32"     target="_blank">findFirstUnsigned32</a>    <div id="findFirstUnsigned32"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/URLs"     target="_blank">findFirstURL</a>    <div id="findFirstURL"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/US-phone-number"     target="_blank">findFirstUSphoneNumber</a>    <div id="findFirstUSphoneNumber"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USD-Currency"     target="_blank">findFirstUsdCurrency</a>    <div id="findFirstUsdCurrency"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USstates"     target="_blank">findFirstUSstates</a>    <div id="findFirstUSstates"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USstates1"     target="_blank">findFirstUSstates1</a>    <div id="findFirstUSstates1"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USstreetNumber"     target="_blank">findFirstUSstreetNumber</a>    <div id="findFirstUSstreetNumber"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USstreets"     target="_blank">findFirstUSstreets</a>    <div id="findFirstUSstreets"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USZipCode"     target="_blank">findFirstUSZipCode</a>    <div id="findFirstUSZipCode"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/UUID"     target="_blank">findFirstUUID</a>    <div id="findFirstUUID"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/YenCurrency"     target="_blank">findFirstYenCurrency</a>    <div id="findFirstYenCurrency"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Youtube"     target="_blank">findFirstYoutube</a>    <div id="findFirstYoutube"></div>
+
+        </div>
+        <div class="column" style="background-color:#ccc;">
+            <h2>Find all</h2>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/24-Hours-time"  target="_blank">findAllTime24</a> <div id="findAllTime24"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ApacheError"     target="_blank">findAllApacheError</a>    <div id="findAllApacheError"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/AsciiString"     target="_blank">findAllAsciiString</a>    <div id="findAllAsciiString"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/AZString"     target="_blank">findAllAZString</a>    <div id="findAllAZString"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Bitcon-Address"     target="_blank">findAllBitcoinAdd</a>    <div id="findAllBitcoinAdd"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Celsius"     target="_blank">findAllCelsius</a>    <div id="findAllCelsius"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Comments"     target="_blank">findAllComments</a>    <div id="findAllComments"></div>   
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Coordinate"     target="_blank">findAllCoordinate</a>    <div id="findAllCoordinate"></div>   
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Coordinate1"     target="_blank">findAllCoordinate1</a>    <div id="findAllCoordinate1"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Coordinate2"     target="_blank">findAllCoordinate2</a>    <div id="findAllCoordinate2"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/CreditCards"     target="_blank">findAllCreditCardVisa</a>    <div id="findAllCreditCardVisa"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Crontab-expression"     target="_blank">findAllCron</a>    <div id="findAllCron"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/DMY"     target="_blank">findAllDMY</a>    <div id="findAllDMY"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/DMY2"     target="_blank">findAllDMY2</a>    <div id="findAllDMY2"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/DMY3"     target="_blank">findAllDMY3</a>    <div id="findAllDMY3"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/DMY4"     target="_blank">findAllDMY4</a>    <div id="findAllDMY4"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Email"     target="_blank">findAllEmail</a>    <div id="findAllEmail"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Email1"     target="_blank">findAllEmail1</a>    <div id="findAllEmail1"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/EmailSimple"     target="_blank">findAllEmailSimple</a>    <div id="findAllEmailSimple"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/EurCurrency"     target="_blank">findAllEurCurrency</a>    <div id="findAllEurCurrency"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Facebook"     target="_blank">findAllFacebook</a>    <div id="findAllFacebook"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Fahrenheit"     target="_blank">findAllFahrenheit</a>    <div id="findAllFahrenheit"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/GermanStreet"     target="_blank">findAllGermanStreet</a>    <div id="findAllGermanStreet"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/HEX"     target="_blank">findAllHEX</a>    <div id="findAllHEX"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/IP"     target="_blank">findAllIP</a>    <div id="findAllIP"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/IP_6"     target="_blank">findAllIP_6</a>    <div id="findAllIP_6"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Italian-fiscal-code"     target="_blank">findAllItalianFiscalCode</a>    <div id="findAllItalianFiscalCode"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianIban"     target="_blank">findAllItalianIban</a>    <div id="findAllItalianIban"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianMobilePhone"     target="_blank">findAllItalianMobilePhone</a>    <div id="findAllItalianMobilePhone"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianPhone"     target="_blank">findAllItalianPhone</a>    <div id="findAllItalianPhone"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianVAT"     target="_blank">findAllItalianVAT</a>    <div id="findAllItalianVAT"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/ItalianZipCode"     target="_blank">findAllItalianZipCode</a>    <div id="findAllItalianZipCode"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MACAddress"     target="_blank">findAllMACAddress</a>    <div id="findAllMACAddress"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MD5"     target="_blank">findAllMD5</a>    <div id="findAllMD5"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MDY"     target="_blank">findAllMDY</a>    <div id="findAllMDY"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MDY2"     target="_blank">findAllMDY2</a>    <div id="findAllMDY2"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MDY3"     target="_blank">findAllMDY3</a>    <div id="findAllMDY3"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/MDY4"     target="_blank">findAllMDY4</a>    <div id="findAllMDY4"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/NotASCII"     target="_blank">findAllNotASCII</a>    <div id="findAllNotASCII"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Number1"     target="_blank">findAllNumber1</a>    <div id="findAllNumber1"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Percentage"     target="_blank">findAllPercentage</a>    <div id="findAllPercentage"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Scientific"     target="_blank">findAllScientific</a>    <div id="findAllScientific"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/SHA256"     target="_blank">findAllSHA256</a>    <div id="findAllSHA256"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Signed"     target="_blank">findAllSigned</a>    <div id="findAllSigned"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/SingleChar"     target="_blank">findAllSingleChar</a>    <div id="findAllSingleChar"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/SingleNumber"     target="_blank">findAllSingleNumber</a>    <div id="findAllSingleNumber"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/StringAndNumber"     target="_blank">findAllStringAndNumber</a>    <div id="findAllStringAndNumber"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Twitter"     target="_blank">findAllTwitter</a>    <div id="findAllTwitter"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Unsigned32"     target="_blank">findAllUnsigned32</a>    <div id="findAllUnsigned32"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/URLs"     target="_blank">findAllURL</a>    <div id="findAllURL"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/US-phone-number"     target="_blank">findAllUSphoneNumber</a>    <div id="findAllUSphoneNumber"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USD-Currency"     target="_blank">findAllUsdCurrency</a>    <div id="findAllUsdCurrency"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USstates"     target="_blank">findAllUSstates</a>    <div id="findAllUSstates"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USstates1"     target="_blank">findAllUSstates1</a>    <div id="findAllUSstates1"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USstreetNumber"     target="_blank">findAllUSstreetNumber</a>    <div id="findAllUSstreetNumber"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USstreets"     target="_blank">findAllUSstreets</a>    <div id="findAllUSstreets"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/USZipCode"     target="_blank">findAllUSZipCode</a>    <div id="findAllUSZipCode"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/UUID"     target="_blank">findAllUUID</a>    <div id="findAllUUID"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/YenCurrency"     target="_blank">findAllYenCurrency</a>    <div id="findAllYenCurrency"></div>
+            <a href="https://github.com/gekomad/scala-regex-collection/wiki/Youtube"     target="_blank">findAllYoutube</a>    <div id="findAllYoutube"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+ function calc(text) {
+    //Validator
+        document.getElementById("validateTime24").innerHTML = Validator.validateTime24(text);
+        document.getElementById("validateApacheError").innerHTML = Validator.validateApacheError(text);
+        document.getElementById("validateAsciiString").innerHTML = Validator.validateAsciiString(text);
+        document.getElementById("validateAZString").innerHTML = Validator.validateAZString(text);
+        document.getElementById("validateBitcoinAdd").innerHTML = Validator.validateBitcoinAdd(text);
+        document.getElementById("validateCelsius").innerHTML = Validator.validateCelsius(text);
+        document.getElementById("validateComments").innerHTML = Validator.validateComments(text);
+        document.getElementById("validateCoordinate").innerHTML= Validator.validateCoordinate(text);
+        document.getElementById("validateCoordinate1").innerHTML = Validator.validateCoordinate1(text);
+        document.getElementById("validateCoordinate2").innerHTML = Validator.validateCoordinate2(text);
+        document.getElementById("validateCreditCardVisa").innerHTML = Validator.validateCreditCardVisa(text);
+        document.getElementById("validateCron").innerHTML = Validator.validateCron(text);
+        document.getElementById("validateDMY").innerHTML = Validator.validateDMY(text);
+        document.getElementById("validateDMY2").innerHTML = Validator.validateDMY2(text);
+        document.getElementById("validateDMY3").innerHTML = Validator.validateDMY3(text);
+        document.getElementById("validateDMY4").innerHTML = Validator.validateDMY4(text);
+        document.getElementById("validateEmail").innerHTML = Validator.validateEmail(text);
+        document.getElementById("validateEmail1").innerHTML = Validator.validateEmail1(text);
+        document.getElementById("validateEmailSimple").innerHTML = Validator.validateEmailSimple(text);
+        document.getElementById("validateEurCurrency").innerHTML = Validator.validateEurCurrency(text);
+        document.getElementById("validateFacebook").innerHTML = Validator.validateFacebook(text);
+        document.getElementById("validateFahrenheit").innerHTML = Validator.validateFahrenheit(text);
+        document.getElementById("validateGermanStreet").innerHTML = Validator.validateGermanStreet(text);
+        document.getElementById("validateHEX").innerHTML = Validator.validateHEX(text);
+        document.getElementById("validateIP").innerHTML = Validator.validateIP(text);
+        document.getElementById("validateIP_6").innerHTML = Validator.validateIP_6(text);
+        document.getElementById("validateItalianFiscalCode").innerHTML = Validator.validateItalianFiscalCode(text);
+        document.getElementById("validateItalianIban").innerHTML = Validator.validateItalianIban(text);
+        document.getElementById("validateItalianMobilePhone").innerHTML = Validator.validateItalianMobilePhone(text);
+        document.getElementById("validateItalianPhone").innerHTML = Validator.validateItalianPhone(text);
+        document.getElementById("validateItalianVAT").innerHTML = Validator.validateItalianVAT(text);
+        document.getElementById("validateItalianZipCode").innerHTML = Validator.validateItalianZipCode(text);
+        document.getElementById("validateMACAddress").innerHTML = Validator.validateMACAddress(text);
+        document.getElementById("validateMD5").innerHTML = Validator.validateMD5(text);
+        document.getElementById("validateMDY").innerHTML = Validator.validateMDY(text);
+        document.getElementById("validateMDY2").innerHTML = Validator.validateMDY2(text);
+        document.getElementById("validateMDY3").innerHTML = Validator.validateMDY3(text);
+        document.getElementById("validateMDY4").innerHTML = Validator.validateMDY4(text);
+        document.getElementById("validateNotASCII").innerHTML = Validator.validateNotASCII(text);
+        document.getElementById("validateNumber1").innerHTML = Validator.validateNumber1(text);
+        document.getElementById("validatePercentage").innerHTML = Validator.validatePercentage(text);
+        document.getElementById("validateScientific").innerHTML = Validator.validateScientific(text);
+        document.getElementById("validateSHA256").innerHTML = Validator.validateSHA256(text);
+        document.getElementById("validateSigned").innerHTML = Validator.validateSigned(text);
+        document.getElementById("validateSingleChar").innerHTML = Validator.validateSingleChar(text);
+        document.getElementById("validateSingleNumber").innerHTML = Validator.validateSingleNumber(text);
+        document.getElementById("validateStringAndNumber").innerHTML = Validator.validateStringAndNumber(text);
+        document.getElementById("validateTwitter").innerHTML = Validator.validateTwitter(text);
+        document.getElementById("validateUnsigned32").innerHTML = Validator.validateUnsigned32(text);
+        document.getElementById("validateURL").innerHTML = Validator.validateURL(text);
+        document.getElementById("validateUSphoneNumber").innerHTML = Validator.validateUSphoneNumber(text);
+        document.getElementById("validateUsdCurrency").innerHTML = Validator.validateUsdCurrency(text);
+        document.getElementById("validateUSstates").innerHTML = Validator.validateUSstates(text);
+        document.getElementById("validateUSstates1").innerHTML = Validator.validateUSstates1(text);
+        document.getElementById("validateUSstreetNumber").innerHTML = Validator.validateUSstreetNumber(text);
+        document.getElementById("validateUSstreets").innerHTML = Validator.validateUSstreets(text);
+        document.getElementById("validateUSZipCode").innerHTML = Validator.validateUSZipCode(text);
+        document.getElementById("validateUUID").innerHTML = Validator.validateUUID(text);
+        document.getElementById("validateYenCurrency").innerHTML = Validator.validateYenCurrency(text);
+        document.getElementById("validateYoutube").innerHTML = Validator.validateYoutube(text);
+
+//Find First
+        document.getElementById("findFirstTime24").innerHTML = FindFirst.findFirstTime24(text);
+        document.getElementById("findFirstApacheError").innerHTML = FindFirst.findFirstApacheError(text);
+        document.getElementById("findFirstAsciiString").innerHTML = FindFirst.findFirstAsciiString(text);
+        document.getElementById("findFirstAZString").innerHTML = FindFirst.findFirstAZString(text);
+        document.getElementById("findFirstBitcoinAdd").innerHTML = FindFirst.findFirstBitcoinAdd(text);
+        document.getElementById("findFirstCelsius").innerHTML = FindFirst.findFirstCelsius(text);
+        document.getElementById("findFirstComments").innerHTML = FindFirst.findFirstComments(text);
+        document.getElementById("findFirstCoordinate").innerHTML= FindFirst.findFirstCoordinate(text);
+        document.getElementById("findFirstCoordinate1").innerHTML = FindFirst.findFirstCoordinate1(text);
+        document.getElementById("findFirstCoordinate2").innerHTML = FindFirst.findFirstCoordinate2(text);
+        document.getElementById("findFirstCreditCardVisa").innerHTML = FindFirst.findFirstCreditCardVisa(text);
+        document.getElementById("findFirstCron").innerHTML = FindFirst.findFirstCron(text);
+        document.getElementById("findFirstDMY").innerHTML = FindFirst.findFirstDMY(text);
+        document.getElementById("findFirstDMY2").innerHTML = FindFirst.findFirstDMY2(text);
+        document.getElementById("findFirstDMY3").innerHTML = FindFirst.findFirstDMY3(text);
+        document.getElementById("findFirstDMY4").innerHTML = FindFirst.findFirstDMY4(text);
+        document.getElementById("findFirstEmail").innerHTML = FindFirst.findFirstEmail(text);
+        document.getElementById("findFirstEmail1").innerHTML = FindFirst.findFirstEmail1(text);
+        document.getElementById("findFirstEmailSimple").innerHTML = FindFirst.findFirstEmailSimple(text);
+        document.getElementById("findFirstEurCurrency").innerHTML = FindFirst.findFirstEurCurrency(text);
+        document.getElementById("findFirstFacebook").innerHTML = FindFirst.findFirstFacebook(text);
+        document.getElementById("findFirstFahrenheit").innerHTML = FindFirst.findFirstFahrenheit(text);
+        document.getElementById("findFirstGermanStreet").innerHTML = FindFirst.findFirstGermanStreet(text);
+        document.getElementById("findFirstHEX").innerHTML = FindFirst.findFirstHEX(text);
+        document.getElementById("findFirstIP").innerHTML = FindFirst.findFirstIP(text);
+        document.getElementById("findFirstIP_6").innerHTML = FindFirst.findFirstIP_6(text);
+        document.getElementById("findFirstItalianFiscalCode").innerHTML = FindFirst.findFirstItalianFiscalCode(text);
+        document.getElementById("findFirstItalianIban").innerHTML = FindFirst.findFirstItalianIban(text);
+        document.getElementById("findFirstItalianMobilePhone").innerHTML = FindFirst.findFirstItalianMobilePhone(text);
+        document.getElementById("findFirstItalianPhone").innerHTML = FindFirst.findFirstItalianPhone(text);
+        document.getElementById("findFirstItalianVAT").innerHTML = FindFirst.findFirstItalianVAT(text);
+        document.getElementById("findFirstItalianZipCode").innerHTML = FindFirst.findFirstItalianZipCode(text);
+        document.getElementById("findFirstMACAddress").innerHTML = FindFirst.findFirstMACAddress(text);
+        document.getElementById("findFirstMD5").innerHTML = FindFirst.findFirstMD5(text);
+        document.getElementById("findFirstMDY").innerHTML = FindFirst.findFirstMDY(text);
+        document.getElementById("findFirstMDY2").innerHTML = FindFirst.findFirstMDY2(text);
+        document.getElementById("findFirstMDY3").innerHTML = FindFirst.findFirstMDY3(text);
+        document.getElementById("findFirstMDY4").innerHTML = FindFirst.findFirstMDY4(text);
+        document.getElementById("findFirstNotASCII").innerHTML = FindFirst.findFirstNotASCII(text);
+        document.getElementById("findFirstNumber1").innerHTML = FindFirst.findFirstNumber1(text);
+        document.getElementById("findFirstPercentage").innerHTML = FindFirst.findFirstPercentage(text);
+        document.getElementById("findFirstScientific").innerHTML = FindFirst.findFirstScientific(text);
+        document.getElementById("findFirstSHA256").innerHTML = FindFirst.findFirstSHA256(text);
+        document.getElementById("findFirstSigned").innerHTML = FindFirst.findFirstSigned(text);
+        document.getElementById("findFirstSingleChar").innerHTML = FindFirst.findFirstSingleChar(text);
+        document.getElementById("findFirstSingleNumber").innerHTML = FindFirst.findFirstSingleNumber(text);
+        document.getElementById("findFirstStringAndNumber").innerHTML = FindFirst.findFirstStringAndNumber(text);
+        document.getElementById("findFirstTwitter").innerHTML = FindFirst.findFirstTwitter(text);
+        document.getElementById("findFirstUnsigned32").innerHTML = FindFirst.findFirstUnsigned32(text);
+        document.getElementById("findFirstURL").innerHTML = FindFirst.findFirstURL(text);
+        document.getElementById("findFirstUSphoneNumber").innerHTML = FindFirst.findFirstUSphoneNumber(text);
+        document.getElementById("findFirstUsdCurrency").innerHTML = FindFirst.findFirstUsdCurrency(text);
+        document.getElementById("findFirstUSstates").innerHTML = FindFirst.findFirstUSstates(text);
+        document.getElementById("findFirstUSstates1").innerHTML = FindFirst.findFirstUSstates1(text);
+        document.getElementById("findFirstUSstreetNumber").innerHTML = FindFirst.findFirstUSstreetNumber(text);
+        document.getElementById("findFirstUSstreets").innerHTML = FindFirst.findFirstUSstreets(text);
+        document.getElementById("findFirstUSZipCode").innerHTML = FindFirst.findFirstUSZipCode(text);
+        document.getElementById("findFirstUUID").innerHTML = FindFirst.findFirstUUID(text);
+        document.getElementById("findFirstYenCurrency").innerHTML = FindFirst.findFirstYenCurrency(text);
+        document.getElementById("findFirstYoutube").innerHTML = FindFirst.findFirstYoutube(text);
+
+
+//Find all
+        document.getElementById("findAllTime24").innerHTML = Find.findAllTime24(text);
+        document.getElementById("findAllApacheError").innerHTML = Find.findAllApacheError(text);
+        document.getElementById("findAllAsciiString").innerHTML = Find.findAllAsciiString(text);
+        document.getElementById("findAllAZString").innerHTML = Find.findAllAZString(text);
+        document.getElementById("findAllBitcoinAdd").innerHTML = Find.findAllBitcoinAdd(text);
+        document.getElementById("findAllCelsius").innerHTML = Find.findAllCelsius(text);
+        document.getElementById("findAllComments").innerHTML = Find.findAllComments(text);
+        document.getElementById("findAllCoordinate").innerHTML= Find.findAllCoordinate(text);
+        document.getElementById("findAllCoordinate1").innerHTML = Find.findAllCoordinate1(text);
+        document.getElementById("findAllCoordinate2").innerHTML = Find.findAllCoordinate2(text);
+        document.getElementById("findAllCreditCardVisa").innerHTML = Find.findAllCreditCardVisa(text);
+        document.getElementById("findAllCron").innerHTML = Find.findAllCron(text);
+        document.getElementById("findAllDMY").innerHTML = Find.findAllDMY(text);
+        document.getElementById("findAllDMY2").innerHTML = Find.findAllDMY2(text);
+        document.getElementById("findAllDMY3").innerHTML = Find.findAllDMY3(text);
+        document.getElementById("findAllDMY4").innerHTML = Find.findAllDMY4(text);
+        document.getElementById("findAllEmail").innerHTML = Find.findAllEmail(text);
+        document.getElementById("findAllEmail1").innerHTML = Find.findAllEmail1(text);
+        document.getElementById("findAllEmailSimple").innerHTML = Find.findAllEmailSimple(text);
+        document.getElementById("findAllEurCurrency").innerHTML = Find.findAllEurCurrency(text);
+        document.getElementById("findAllFacebook").innerHTML = Find.findAllFacebook(text);
+        document.getElementById("findAllFahrenheit").innerHTML = Find.findAllFahrenheit(text);
+        document.getElementById("findAllGermanStreet").innerHTML = Find.findAllGermanStreet(text);
+        document.getElementById("findAllHEX").innerHTML = Find.findAllHEX(text);
+        document.getElementById("findAllIP").innerHTML = Find.findAllIP(text);
+        document.getElementById("findAllIP_6").innerHTML = Find.findAllIP_6(text);
+        document.getElementById("findAllItalianFiscalCode").innerHTML = Find.findAllItalianFiscalCode(text);
+        document.getElementById("findAllItalianIban").innerHTML = Find.findAllItalianIban(text);
+        document.getElementById("findAllItalianMobilePhone").innerHTML = Find.findAllItalianMobilePhone(text);
+        document.getElementById("findAllItalianPhone").innerHTML = Find.findAllItalianPhone(text);
+        document.getElementById("findAllItalianVAT").innerHTML = Find.findAllItalianVAT(text);
+        document.getElementById("findAllItalianZipCode").innerHTML = Find.findAllItalianZipCode(text);
+        document.getElementById("findAllMACAddress").innerHTML = Find.findAllMACAddress(text);
+        document.getElementById("findAllMD5").innerHTML = Find.findAllMD5(text);
+        document.getElementById("findAllMDY").innerHTML = Find.findAllMDY(text);
+        document.getElementById("findAllMDY2").innerHTML = Find.findAllMDY2(text);
+        document.getElementById("findAllMDY3").innerHTML = Find.findAllMDY3(text);
+        document.getElementById("findAllMDY4").innerHTML = Find.findAllMDY4(text);
+        document.getElementById("findAllNotASCII").innerHTML = Find.findAllNotASCII(text);
+        document.getElementById("findAllNumber1").innerHTML = Find.findAllNumber1(text);
+        document.getElementById("findAllPercentage").innerHTML = Find.findAllPercentage(text);
+        document.getElementById("findAllScientific").innerHTML = Find.findAllScientific(text);
+        document.getElementById("findAllSHA256").innerHTML = Find.findAllSHA256(text);
+        document.getElementById("findAllSigned").innerHTML = Find.findAllSigned(text);
+        document.getElementById("findAllSingleChar").innerHTML = Find.findAllSingleChar(text);
+        document.getElementById("findAllSingleNumber").innerHTML = Find.findAllSingleNumber(text);
+        document.getElementById("findAllStringAndNumber").innerHTML = Find.findAllStringAndNumber(text);
+        document.getElementById("findAllTwitter").innerHTML = Find.findAllTwitter(text);
+        document.getElementById("findAllUnsigned32").innerHTML = Find.findAllUnsigned32(text);
+        document.getElementById("findAllURL").innerHTML = Find.findAllURL(text);
+        document.getElementById("findAllUSphoneNumber").innerHTML = Find.findAllUSphoneNumber(text);
+        document.getElementById("findAllUsdCurrency").innerHTML = Find.findAllUsdCurrency(text);
+        document.getElementById("findAllUSstates").innerHTML = Find.findAllUSstates(text);
+        document.getElementById("findAllUSstates1").innerHTML = Find.findAllUSstates1(text);
+        document.getElementById("findAllUSstreetNumber").innerHTML = Find.findAllUSstreetNumber(text);
+        document.getElementById("findAllUSstreets").innerHTML = Find.findAllUSstreets(text);
+        document.getElementById("findAllUSZipCode").innerHTML = Find.findAllUSZipCode(text);
+        document.getElementById("findAllUUID").innerHTML = Find.findAllUUID(text);
+        document.getElementById("findAllYenCurrency").innerHTML = Find.findAllYenCurrency(text);
+        document.getElementById("findAllYoutube").innerHTML = Find.findAllYoutube(text);
+}
+
+</script>
+
+</body>
+</html>

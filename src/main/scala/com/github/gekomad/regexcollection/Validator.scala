@@ -6,13 +6,13 @@ import scala.util.Try
 import scala.util.matching.Regex
 
 object Validate {
-  def validateIgnoreCase[A](a: String)(implicit f: Validator[A]): Option[String]  = f.validateIgnoreCase(a)
-  def validate[A](a: String)(implicit f: Validator[A]): Option[String]            = f.validateCaseSensitive(a)
-  def regexp[A](implicit f: Validator[A]): String                                 = f.regexp
-  def findAllIgnoreCase[A](a: String)(implicit f: Validator[A]): List[String]     = f.findAllIgnoreCase(a)
-  def findAll[A](a: String)(implicit f: Validator[A]): List[String]               = f.findAllCaseSensitive(a)
-  def findFirstIgnoreCase[A](a: String)(implicit f: Validator[A]): Option[String] = f.findFirstIgnoreCase(a)
-  def findFirst[A](a: String)(implicit f: Validator[A]): Option[String]           = f.findFirstCaseSensitive(a)
+//  def validateIgnoreCase[A](a: String)(implicit f: Validator[A]): Option[String]  = f.validateIgnoreCase(a)
+  def validate[A](a: String)(implicit f: Validator[A]): Option[String] = f.validateCaseSensitive(a)
+  def regexp[A](implicit f: Validator[A]): String                      = f.regexp
+//  def findAllIgnoreCase[A](a: String)(implicit f: Validator[A]): List[String]     = f.findAllIgnoreCase(a)
+  def findAll[A](a: String)(implicit f: Validator[A]): List[String] = f.findAllCaseSensitive(a)
+//  def findFirstIgnoreCase[A](a: String)(implicit f: Validator[A]): Option[String] = f.findFirstIgnoreCase(a)
+  def findFirst[A](a: String)(implicit f: Validator[A]): Option[String] = f.findFirstCaseSensitive(a)
 }
 
 trait Email
@@ -109,11 +109,11 @@ object Collection {
   import java.time.format.DateTimeFormatter._
 
   trait Validator[A] {
-    def validateIgnoreCase(a: String): Option[String]
+//    def validateIgnoreCase(a: String): Option[String]
     def validateCaseSensitive(a: String): Option[String]
-    def findAllIgnoreCase(a: String): List[String]
+//    def findAllIgnoreCase(a: String): List[String]
     def findAllCaseSensitive(a: String): List[String]
-    def findFirstIgnoreCase(a: String): Option[String]
+//    def findFirstIgnoreCase(a: String): Option[String]
     def findFirstCaseSensitive(a: String): Option[String]
     def regexp: String
   }
@@ -122,15 +122,15 @@ object Collection {
     def apply[A](reg: String): Validator[A] = new Validator[A] {
       override val regexp: String = reg
       val regex: Regex            = reg.r
-      val regexIgn: Regex         = s"$reg".r
-      val regexExact: Regex       = s"^$reg$$".r
-      val regexExactIgn: Regex    = s"^$reg$$".r
+      //val regexIgn: Regex         = s"$reg".r
+      val regexExact: Regex = s"^$reg$$".r
+      //val regexExactIgn: Regex    = s"^$reg$$".r
 
-      override def validateIgnoreCase(a: String): Option[String]    = regexExactIgn.findFirstMatchIn(a).map(_ => a)
+      //    override def validateIgnoreCase(a: String): Option[String]    = regexExactIgn.findFirstMatchIn(a.toUpperCase).map(_ => a)
       override def validateCaseSensitive(a: String): Option[String] = regexExact.findFirstMatchIn(a).map(_ => a)
-      def validateCaseInsensitive(a: String): Option[String]        = regexExactIgn.findFirstMatchIn(a).map(_ => a)
+      //  def validateCaseInsensitive(a: String): Option[String]        = regexExactIgn.findFirstMatchIn(a.toUpperCase).map(_ => a)
 
-      override def findAllIgnoreCase(a: String): List[String] = findAll(a, regexIgn)
+      // override def findAllIgnoreCase(a: String): List[String] = findAll(a.toUpperCase, regexIgn)
 
       override def findAllCaseSensitive(a: String): List[String] = findAll(a, regex)
 
@@ -147,23 +147,23 @@ object Collection {
         extractToList(r.findAllIn(a), Nil)
       }
 
-      override def findFirstIgnoreCase(a: String): Option[String]    = findFirst(a, regexIgn)
+      //    override def findFirstIgnoreCase(a: String): Option[String]    = findFirst(a.toUpperCase, regexIgn)
       override def findFirstCaseSensitive(a: String): Option[String] = findFirst(a, regex)
     }
 
     def apply[A](f: String => Option[String]): Validator[A] = new Validator[A] {
-      def validateCaseSensitive(a: String): Option[String]           = f(a)
-      def validateIgnoreCase(a: String): Option[String]              = f(a)
-      override def findAllIgnoreCase(a: String): List[String]        = Nil
-      override def findAllCaseSensitive(a: String): List[String]     = Nil
-      override val regexp: String                                    = ""
-      override def findFirstIgnoreCase(a: String): Option[String]    = None
+      def validateCaseSensitive(a: String): Option[String] = f(a)
+      def validateIgnoreCase(a: String): Option[String]    = f(a)
+//      override def findAllIgnoreCase(a: String): List[String]        = Nil
+      override def findAllCaseSensitive(a: String): List[String] = Nil
+      override val regexp: String                                = ""
+//      override def findFirstIgnoreCase(a: String): Option[String]    = None
       override def findFirstCaseSensitive(a: String): Option[String] = None
     }
   }
 
   implicit val validatorEmail: Validator[Email] =
-    Validator[Email](""".+@.+\..+""")
+    Validator[Email]("""[a-zA-Z0-9\.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*""")
 
   implicit val validatorEmailSimple: Validator[EmailSimple] = Validator[EmailSimple](""".+@.+\..+""")
   implicit val validatorHref: Validator[HtmlHref]           = Validator[HtmlHref]("""href=[\"\'](http[s]?:\/\/|\.\/|\/)?\w+(\.\w+)*(\/\w+(\.\w+)?)*(\/|\?\w*=\w*(&\w*=\w*)*)?[\"\']""")
@@ -205,7 +205,7 @@ object Collection {
   implicit val validatorItalianVAT: Validator[ItalianVAT]                 = Validator[ItalianVAT]("""[0-9]{11}""")
   implicit val validatorItalianIban: Validator[ItalianIban]               = Validator[ItalianIban]("""IT\d{2}[ ][a-zA-Z]\d{3}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{4}[ ]\d{3}|IT\d{2}[a-zA-Z]\d{22}""")
   implicit val validatorItalianFiscalCode: Validator[ItalianFiscalCode] = Validator[ItalianFiscalCode](
-    """(?:(?:[B-DF-HJ-NP-TV-Z]|[AEIOU])[AEIOU][AEIOUX]|[B-DF-HJ-NP-TV-Z]{2}[A-Z]){2}[\dLMNP-V]{2}(?:[A-EHLMPR-T](?:[04LQ][1-9MNP-V]|[1256LMRS][\dLMNP-V])|[DHPS][37PT][0L]|[ACELMRT][37PT][01LM])(?:[A-MZ][1-9MNP-V][\dLMNP-V]{2}|[A-M][0L](?:[1-9MNP-V][\dLMNP-V]|[0L][1-9MNP-V]))[A-Z]"""
+    """(?i)(?:(?:[B-DF-HJ-NP-TV-Z]|[AEIOU])[AEIOU][AEIOUX]|[B-DF-HJ-NP-TV-Z]{2}[A-Z]){2}[\dLMNP-V]{2}(?:[A-EHLMPR-T](?:[04LQ][1-9MNP-V]|[1256LMRS][\dLMNP-V])|[DHPS][37PT][0L]|[ACELMRT][37PT][01LM])(?:[A-MZ][1-9MNP-V][\dLMNP-V]{2}|[A-M][0L](?:[1-9MNP-V][\dLMNP-V]|[0L][1-9MNP-V]))[A-Z]"""
   )
   implicit val validatorMD5: Validator[MD5]             = Validator[MD5]("[a-fA-F0-9]{32}")
   implicit val validatorUSZipCode: Validator[USZipCode] = Validator[USZipCode]("""[0-9]{5}(?:-[0-9]{4})?""")
@@ -249,7 +249,7 @@ object Collection {
 
   implicit val validatorYoutube: Validator[Youtube] =
     Validator[Youtube](
-      """(?:https:\/\/)?(?:(?:(?:www\.?)?youtube\.com(?:\/(?:(?:watch\?.*?(v=[^&\s]+).*)|(?:v(\/.*))|(channel\/.+)|(?:user\/(.+))|(?:results\?(search_query=.+))))?)|(?:youtu\.be(\/.*)?))"""
+      """(?i)(?:https:\/\/)?(?:(?:(?:www\.?)?youtube\.com(?:\/(?:(?:watch\?.*?(v=[^&\s]+).*)|(?:v(\/.*))|(channel\/.+)|(?:user\/(.+))|(?:results\?(search_query=.+))))?)|(?:youtu\.be(\/.*)?))"""
     )
   implicit val validatorBitcoinAdd: Validator[BitcoinAdd]       = Validator[BitcoinAdd]("([13][a-km-zA-HJ-NP-Z0-9]{26,33})")
   implicit val validatorHEX: Validator[HEX]                     = Validator[HEX]("#?([\\da-fA-F]{2})([\\da-fA-F]{2})([\\da-fA-F]{2})")
@@ -259,12 +259,12 @@ object Collection {
   implicit val validatorUSphoneNumber: Validator[USphoneNumber] = Validator[USphoneNumber]("""(?:\d{1}\s)?\(?(\d{3})\)?-?\s?(\d{3})-?\s?(\d{4})""")
   implicit val validatorTime24: Validator[Time24]               = Validator[Time24]("([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?")
   implicit val validatorURL: Validator[URL]                     = Validator[URL]("""((\w+:\/\/)[-a-zA-Z0-9:@;?&=\/%\+\.\*!'\(\),\$_\{\}\^~\[\]`#|]+)""")
-  implicit val validatorURL1: Validator[URL1]                   = Validator[URL1]("""(http:\/\/www\.|https:\/\/www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?""")
-  implicit val validatorURL2: Validator[URL2]                   = Validator[URL2]("""(http:\/\/www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?""")
-  implicit val validatorURL3: Validator[URL3]                   = Validator[URL3]("""(https:\/\/www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?""")
-  implicit val validatorFTP: Validator[FTP]                     = Validator[FTP]("""(ftp:\/\/|ftps:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?""")
-  implicit val validatorFTP1: Validator[FTP1]                   = Validator[FTP1]("""(ftp:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?""")
-  implicit val validatorFTP2: Validator[FTP2]                   = Validator[FTP2]("""(ftps:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?""")
+  implicit val validatorURL1: Validator[URL1]                   = Validator[URL1]("""(?i)(http:\/\/www\.|https:\/\/www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?""")
+  implicit val validatorURL2: Validator[URL2]                   = Validator[URL2]("""(?i)(http:\/\/www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?""")
+  implicit val validatorURL3: Validator[URL3]                   = Validator[URL3]("""(?i)(https:\/\/www\.)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?""")
+  implicit val validatorFTP: Validator[FTP]                     = Validator[FTP]("""(?i)(ftp:\/\/|ftps:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?""")
+  implicit val validatorFTP1: Validator[FTP1]                   = Validator[FTP1]("""(?i)(ftp:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?""")
+  implicit val validatorFTP2: Validator[FTP2]                   = Validator[FTP2]("""(?i)(ftps:\/\/)[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?""")
   implicit val validatorDomain: Validator[Domain]               = Validator[Domain]("""(?!www\.)[A-z0-9][A-z0-9-]{1,61}[A-z0-9](\.[A-z]{2,}){1,}""")
   implicit val validatorTime: Validator[Time] =
     Validator[Time]("""(([0-9]|[0-1][0-9]|[2][0-3]):([0-5][0-9])(\s{0,1})(AM|PM|am|pm|aM|Am|pM|Pm{2,2})$)|(^([0-9]|[1][0-9]|[2][0-3])(\s{0,1})(AM|PM|am|pm|aM|Am|pM|Pm{2,2}))""")
@@ -278,16 +278,16 @@ object Collection {
   implicit val validatorCreditCardDiscover: Validator[CreditCardDiscover]               = Validator[CreditCardDiscover]("""6(?:011|5[0-9]{2})[0-9]{12}""")
   implicit val validatorCreditCardJCB: Validator[CreditCardJCB]                         = Validator[CreditCardJCB]("""(?:2131|1800|35\d{3})\d{11}""")
 
-//  implicit val validatorLocalDateTime: Validator[LocalDateTime] = Validator[LocalDateTime]((a: String) => Try(LocalDateTime.parse(a, ISO_LOCAL_DATE_TIME)).toOption.map(_ => a))
+  implicit val validatorLocalDateTime: Validator[LocalDateTime] = Validator[LocalDateTime]((a: String) => Try(LocalDateTime.parse(a, ISO_LOCAL_DATE_TIME)).toOption.map(_ => a))
 
-//  implicit val validatorLocalDate: Validator[LocalDate] = Validator[LocalDate]((a: String) => Try(LocalDate.parse(a, ISO_LOCAL_DATE)).toOption.map(_ => a))
+  implicit val validatorLocalDate: Validator[LocalDate] = Validator[LocalDate]((a: String) => Try(LocalDate.parse(a, ISO_LOCAL_DATE)).toOption.map(_ => a))
 
-//  implicit val validatorLocalTime: Validator[LocalTime] = Validator[LocalTime]((a: String) => Try(LocalTime.parse(a, ISO_LOCAL_TIME)).toOption.map(_ => a))
+  implicit val validatorLocalTime: Validator[LocalTime] = Validator[LocalTime]((a: String) => Try(LocalTime.parse(a, ISO_LOCAL_TIME)).toOption.map(_ => a))
 
-//  implicit val validatorOffsetDateTime: Validator[OffsetDateTime] = Validator[OffsetDateTime]((a: String) => Try(OffsetDateTime.parse(a, ISO_OFFSET_DATE_TIME)).toOption.map(_ => a))
+  implicit val validatorOffsetDateTime: Validator[OffsetDateTime] = Validator[OffsetDateTime]((a: String) => Try(OffsetDateTime.parse(a, ISO_OFFSET_DATE_TIME)).toOption.map(_ => a))
 
-// TODO implicit val validatorOffsetTime: Validator[OffsetTime] = Validator[OffsetTime]((a: String) => Try(OffsetTime.parse(a, ISO_OFFSET_TIME)).toOption.map(_ => a))
+  implicit val validatorOffsetTime: Validator[OffsetTime] = Validator[OffsetTime]((a: String) => Try(OffsetTime.parse(a, ISO_OFFSET_TIME)).toOption.map(_ => a))
 
-//  implicit val validatorZonedDateTime: Validator[ZonedDateTime] = Validator[ZonedDateTime]((a: String) => Try(ZonedDateTime.parse(a, ISO_ZONED_DATE_TIME)).toOption.map(_ => a))
+  implicit val validatorZonedDateTime: Validator[ZonedDateTime] = Validator[ZonedDateTime]((a: String) => Try(ZonedDateTime.parse(a, ISO_ZONED_DATE_TIME)).toOption.map(_ => a))
 
 }

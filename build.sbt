@@ -2,12 +2,12 @@ name := "scala-regex-collection"
 
 version := "1.0.1"
 
-scalaVersion := "2.13.1"
+scalaVersion := "2.13.2"
 organization := "com.github.gekomad"
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.0-M2" % Test
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.3.0-SNAP2" % Test
 
-crossScalaVersions := Seq("2.11.12", "2.12.6", "2.12.8", "2.13.0", "2.13.1")
+crossScalaVersions := Seq("2.11.12", "2.12.8", "2.13.2")
 
 scalacOptions ++= Seq(
   "-deprecation",

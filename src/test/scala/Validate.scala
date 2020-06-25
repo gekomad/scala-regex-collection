@@ -941,12 +941,12 @@ class Validate extends AnyFunSuite {
     trait Bar
     import com.github.gekomad.regexcollection.Collection.Validator
     import com.github.gekomad.regexcollection.Validate.validate
-    import com.github.gekomad.regexcollection.Validate.validateIgnoreCase
+//    import com.github.gekomad.regexcollection.Validate.validateIgnoreCase
     implicit val myValidator = Validator[Bar]("Bar.*")
     assert(validate[Bar]("a string") == None)
     assert(validate[Bar]("Bar foo") == Some("Bar foo"))
     assert(validate[Bar]("bar foo") == None)
-    assert(validateIgnoreCase[Bar]("bar foo") == Some("bar foo"))
+//    assert(validateIgnoreCase[Bar]("bar foo") == Some("bar foo"))
 
   }
 
