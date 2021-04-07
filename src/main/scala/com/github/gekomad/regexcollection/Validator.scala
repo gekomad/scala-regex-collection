@@ -142,7 +142,7 @@ object Collection {
         def extractToList(mi: Regex.MatchIterator, acc: List[String]): List[String] =
           if (!mi.hasNext) acc
           else
-            extractToList(mi, acc ::: List(mi.next))
+            extractToList(mi, acc ::: List(mi.next()))
 
         extractToList(r.findAllIn(a), Nil)
       }

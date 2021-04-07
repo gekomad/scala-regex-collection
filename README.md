@@ -5,7 +5,10 @@ Scala regex collection
 
 Scala-regex-collection is a pure scala regex collection
 ## Add the library to your project
-`libraryDependencies += "com.github.gekomad" %% "scala-regex-collection" % "1.0.1"`
+
+The latest version of the library is available for Scala 2.12, 2.13 and 3.0.
+
+`libraryDependencies += "com.github.gekomad" %% "scala-regex-collection" % "2.0.0"`
 
  ## Using Library
 

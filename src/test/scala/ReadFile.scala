@@ -8,9 +8,9 @@ class ReadFile extends AnyFunSuite {
     import com.github.gekomad.regexcollection.Validate.findAll
     import java.io.File
     import scala.util.Try
-    def getListOfFiles(dir: String)(f : File => Unit): Unit = {
-      def go(dir: File): Unit= dir match {
-        case d if d.exists && d.isDirectory && d.canRead=>
+    def getListOfFiles(dir: String)(f: File => Unit): Unit = {
+      def go(dir: File): Unit = dir match {
+        case d if d.exists && d.isDirectory && d.canRead =>
           val files = d.listFiles.filter(a => a.canRead && a.isFile).toList
           val dirs  = dir.listFiles.filter(_.isDirectory).toList
           files.foreach(f)
@@ -20,9 +20,9 @@ class ReadFile extends AnyFunSuite {
       go(new File(dir))
     }
 
-   getListOfFiles("/") { filename =>
+    getListOfFiles("/") { filename =>
       Try {
-        for (line <- Source.fromFile(filename).getLines) {
+        for (line <- Source.fromFile(filename).getLines()) {
           findAll[Email](line).foreach(a => println(s"$filename: [Email] $a"))
           findAll[Time24](line).foreach(a => println(s"$filename: [Time24] $a"))
           findAll[ApacheError](line).foreach(a => println(s"$filename: [ApacheError] $a"))
@@ -38,9 +38,9 @@ class ReadFile extends AnyFunSuite {
           findAll[DMY3](line).foreach(a => println(s"$filename: [DMY3] $a"))
           findAll[UUID](line).foreach(a => println(s"$filename: [UUID] $a"))
           findAll[Youtube](line).foreach(a => println(s"$filename: [Youtube] $a"))
-
         }
       }
+      ()
     }
   }
 
