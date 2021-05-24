@@ -956,13 +956,14 @@ class Validate extends AnyFunSuite {
     import com.github.gekomad.regexcollection.Collection.Validator
     import scala.util.Try
 
-    implicit val validator = Validator[Foo](
-      (a: String) =>
-        Try(a.toInt) match {
-          case Failure(_) => None
-          case Success(i) => if (i % 2 == 0) Option(a) else None
-      }
-    )
+    implicit val validator: Validator[Foo] =
+      Validator[Foo](
+        (a: String) =>
+          Try(a.toInt) match {
+            case Failure(_) => None
+            case Success(i) => if (i % 2 == 0) Option(a) else None
+        }
+      )
 
     assert(validate[Foo]("42") == Some("42"))
     assert(validate[Foo]("21") == None)
