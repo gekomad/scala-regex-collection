@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/gekomad/scala-regex-collection.svg?branch=master)](https://travis-ci.com/gekomad/scala-regex-collection)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.gekomad/scala-regex-collection_3/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.gekomad/scala-regex-collection_3)
 
 Scala regex collection
 =====================
