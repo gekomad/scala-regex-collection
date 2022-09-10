@@ -5,13 +5,14 @@ Scala regex collection
 =====================
 
 Scala-regex-collection is a pure scala regex collection
+
 ## Add the library to your project
 
-The latest version of the library is available for Scala 2.12, 2.13 and 3.0.
+The latest version of the library is available for Scala 2.12, 2.13, 3 and ScalaJS.
 
-`libraryDependencies += "com.github.gekomad" %% "scala-regex-collection" % "2.0.0"`
+`libraryDependencies += "com.github.gekomad" %% "scala-regex-collection" % "2.0.1"`
 
- ## Using Library
+## Using Library
 
 ### Patterns
 
@@ -28,16 +29,20 @@ Ciphers
 - [UUID](https://github.com/gekomad/scala-regex-collection/wiki/UUID)  (1CC3CCBB-C749-3078-E050-1AACBE064651)
 - [MD5](https://github.com/gekomad/scala-regex-collection/wiki/MD5)  (23f8e84c1f4e7c8814634267bd456194)
 - [SHA1](https://github.com/gekomad/scala-regex-collection/wiki/SHA1)  (1c18da5dbf74e3fc1820469cf1f54355b7eec92d)
-- [SHA256](https://github.com/gekomad/scala-regex-collection/wiki/SHA256) (000020f89134d831f48541b2d8ec39397bc99fccf4cc86a3861257dbe6d819d1)
+- [SHA256](https://github.com/gekomad/scala-regex-collection/wiki/SHA256) (
+  000020f89134d831f48541b2d8ec39397bc99fccf4cc86a3861257dbe6d819d1)
 
 URL, IP, MAC Address
 
 - [IP](https://github.com/gekomad/scala-regex-collection/wiki/IP)  (10.192.168.1)
 - [IP_6](https://github.com/gekomad/scala-regex-collection/wiki/IP_6)  (2001:db8:a0b:12f0::1)
 - [URLs](https://github.com/gekomad/scala-regex-collection/wiki/URLs)  (http://</span>abc.def</span>.com)
-- [Youtube](https://github.com/gekomad/scala-regex-collection/wiki/Youtube)  (https://</span>www</span>.youtube</span>.com/watch?v=9bZkp7q19f0)
-- [Facebook](https://github.com/gekomad/scala-regex-collection/wiki/Facebook)  (https://</span>www</span>.facebook.</span>com/thesimpsons - https://</span>www</span>.facebook.</span>com/pages/)
-- [Twitter](https://github.com/gekomad/scala-regex-collection/wiki/Twitter)  (https://</span>twitter</span>.com/rtpharry)
+- [Youtube](https://github.com/gekomad/scala-regex-collection/wiki/Youtube)  (https://</span>www</span>.youtube</span>
+  .com/watch?v=9bZkp7q19f0)
+- [Facebook](https://github.com/gekomad/scala-regex-collection/wiki/Facebook)  (https://</span>www</span>
+  .facebook.</span>com/thesimpsons - https://</span>www</span>.facebook.</span>com/pages/)
+- [Twitter](https://github.com/gekomad/scala-regex-collection/wiki/Twitter)  (https://</span>twitter</span>
+  .com/rtpharry)
 - [MAC Address](https://github.com/gekomad/scala-regex-collection/wiki/MACAddress)  (fE:dC:bA:98:76:54)
 
 HEX
@@ -46,13 +51,17 @@ HEX
 
 Bitcoin
 
-- [Bitcon Address](https://github.com/gekomad/scala-regex-collection/wiki/Bitcon-Address)  (3Nxwenay9Z8Lc9JBiywExpnEFiLp6Afp8v)
+- [Bitcon Address](https://github.com/gekomad/scala-regex-collection/wiki/Bitcon-Address)  (
+  3Nxwenay9Z8Lc9JBiywExpnEFiLp6Afp8v)
 
 Phone numbers
 
-- [US phone number](https://github.com/gekomad/scala-regex-collection/wiki/US-phone-number)  (555-555-5555 - (416)555-3456)
-- [Italian Mobile Phone](https://github.com/gekomad/scala-regex-collection/wiki/ItalianMobilePhone) (+393471234561 - 3381234561)
-- [Italian Phone](https://github.com/gekomad/scala-regex-collection/wiki/ItalianPhone) (02 645566 - 02/583725 - 02-583725)
+- [US phone number](https://github.com/gekomad/scala-regex-collection/wiki/US-phone-number)  (555-555-5555 - (416)
+  555-3456)
+- [Italian Mobile Phone](https://github.com/gekomad/scala-regex-collection/wiki/ItalianMobilePhone) (+393471234561 -
+  3381234561)
+- [Italian Phone](https://github.com/gekomad/scala-regex-collection/wiki/ItalianPhone) (02 645566 - 02/583725 -
+  02-583725)
 
 Date time
 
@@ -81,11 +90,13 @@ Codes
 
 - [Italian fiscal code](https://github.com/gekomad/scala-regex-collection/wiki/Italian-fiscal-code) (BDAPPP14A01A001R)
 - [Italian VAT code](https://github.com/gekomad/scala-regex-collection/wiki/ItalianVAT) (13297040362)
-- [Italian Iban](https://github.com/gekomad/scala-regex-collection/wiki/ItalianIban) (IT28 W800 0000 2921 0064 5211 151 - IT28W8000000292100645211151)
+- [Italian Iban](https://github.com/gekomad/scala-regex-collection/wiki/ItalianIban) (IT28 W800 0000 2921 0064 5211
+  151 - IT28W8000000292100645211151)
 - [US states](https://github.com/gekomad/scala-regex-collection/wiki/USstates) (FL - CA)
 - [US states1](https://github.com/gekomad/scala-regex-collection/wiki/USstates1) (Connecticut - Colorado)
 - [US zip code](https://github.com/gekomad/scala-regex-collection/wiki/USZipCode)  (43802)
-- [US streets](https://github.com/gekomad/scala-regex-collection/wiki/USStreets)  (123 Park Ave Apt 123 New York City, NY 10002)
+- [US streets](https://github.com/gekomad/scala-regex-collection/wiki/USStreets)  (123 Park Ave Apt 123 New York City,
+  NY 10002)
 - [US street numbers](https://github.com/gekomad/scala-regex-collection/wiki/USStreetNumber)  (P.O. Box 432)
 - [Italian zip code](https://github.com/gekomad/scala-regex-collection/wiki/ItalianZipCode) (23887)
 - [German streets](https://github.com/gekomad/scala-regex-collection/wiki/GermanStreet) (Mühlenstr. 33)
@@ -93,7 +104,8 @@ Codes
 Concurrency
 
 - [USD Currency](https://github.com/gekomad/scala-regex-collection/wiki/USD-Currency)  ($1.00 - 1,500.00)
-- [EUR Currency](https://github.com/gekomad/scala-regex-collection/wiki/EurCurrency)  (0,00 € - 133,89 EUR - 133,89 EURO)
+- [EUR Currency](https://github.com/gekomad/scala-regex-collection/wiki/EurCurrency)  (0,00 € - 133,89 EUR - 133,89
+  EURO)
 - [YEN Currency](https://github.com/gekomad/scala-regex-collection/wiki/YenCurrency)  (¥1.00 - 15.00 - ¥-1213,120.00)
 
 Strings
@@ -106,7 +118,8 @@ Strings
 
 Logs
 
-- [Apache error](https://github.com/gekomad/scala-regex-collection/wiki/ApacheError)  ([Fri Dec 16 02:25:55 2005] [error] [client 1.2.3.4] Client sent malformed Host header)
+- [Apache error](https://github.com/gekomad/scala-regex-collection/wiki/ApacheError)  ([Fri Dec 16 02:25:55 2005] [error] [client 1.2.3.4]
+  Client sent malformed Host header)
 
 Numbers
 
@@ -123,7 +136,8 @@ Coordinates
 
 - [Coordinate](https://github.com/gekomad/scala-regex-collection/wiki/Coordinate)  (N90.00.00 E180.00.00)
 - [Coordinate1](https://github.com/gekomad/scala-regex-collection/wiki/Coordinate1)  (45°23'36.0" N 10°33'48.0" E)
-- [Coordinate2](https://github.com/gekomad/scala-regex-collection/wiki/Coordinate2)  (12:12:12.223546"N - 15:17:6"S - 12°30'23.256547"S)
+- [Coordinate2](https://github.com/gekomad/scala-regex-collection/wiki/Coordinate2)  (12:12:12.223546"N - 15:17:6"S -
+  12°30'23.256547"S)
 
 Programming
 
@@ -138,12 +152,13 @@ Credit Cards
 - [Discover](https://github.com/gekomad/scala-regex-collection/wiki/CreditCards)  (/* 6011000000000004 */)
 - [JCB](https://github.com/gekomad/scala-regex-collection/wiki/CreditCards)  (/* 3588000000000009 */)
 
- ## Use the library
-
+## Use the library
 
 ### Validate String
-Returns Option[String] with the matched string
-```
+
+Returns `Option[String]` with the matched string
+
+```scala
 import com.github.gekomad.regexcollection._
 import com.github.gekomad.regexcollection.Validate.validate
 import java.time.LocalDateTime
@@ -155,8 +170,10 @@ assert(validate[LocalDateTime]("2000-12-31T11:21:19") == Some("2000-12-31T11:21:
 ```
 
 ### findAll
+
 Example extracting all emails from a string
-```
+
+```scala
 import com.github.gekomad.regexcollection.Email
 import com.github.gekomad.regexcollection.Validate.findAll
 
@@ -166,8 +183,10 @@ assert(findAll[Email]("ddddd") == List())
 ```
 
 ### findFirst
+
 Example extracting first email from a string
-```
+
+```scala
 trait Bar
 import com.github.gekomad.regexcollection.Validate.findFirst
 import com.github.gekomad.regexcollection.Validate.findFirstIgnoreCase
@@ -179,8 +198,10 @@ assert(findFirst[Bar]("bar abc@google.com hi hello Bar@yahoo.com 123 bar@foo.com
 ```
 
 ### Get pattern
+
 Returns the current pattern used for that type, for example for Email type:
-```
+
+```scala
 import com.github.gekomad.regexcollection.Email
 import com.github.gekomad.regexcollection.Validate.regexp
 
@@ -191,7 +212,7 @@ assert(regexp[Email] == """[a-zA-Z0-9\.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA
 
 It's possible modify the default pattern for all types, example for Email
 
-```
+```scala
 import com.github.gekomad.regexcollection.Email
 import com.github.gekomad.regexcollection.Validate.validate
 import com.github.gekomad.regexcollection.Collection.Validator
@@ -209,7 +230,8 @@ assert(validate[Email](email) == Some("abc,a@%.d"))
 ### Matching your own type
 
 Defining a pattern for Bar type
-```
+
+```scala
 trait Bar
 
 import com.github.gekomad.regexcollection.Validate.validate
@@ -230,8 +252,7 @@ assert(validateIgnoreCase[Bar]("bar foo") == Some("bar foo"))
 
 Retrieve all emails using findAll and findAllCaseSensitive
 
-
-```
+```scala
 trait Bar
 import com.github.gekomad.regexcollection.Collection.Validator
 import com.github.gekomad.regexcollection.Validate._
@@ -250,7 +271,7 @@ Instead of using a regular expression to match a string it's possible defining a
 
 Example matching even numbers
 
-```
+```scala
 trait Foo
 
 import com.github.gekomad.regexcollection.Validate.validate
@@ -273,7 +294,9 @@ assert(validate[Foo]("hello") == None)
 ```
 
 ## Bugs and Feedback
-For bugs, questions and discussions please use [Github Issues](https://github.com/gekomad/scala-regex-collection/issues).
+
+For bugs, questions and discussions please
+use [Github Issues](https://github.com/gekomad/scala-regex-collection/issues).
 
 ## License
 

@@ -26,7 +26,6 @@ pomExtra :=
     </scm>
     <url>https://github.com/gekomad/scala-regex-collection</url>
 
-
 ThisBuild / publishMavenStyle := true
 
 publishConfiguration := publishConfiguration.value.withOverwrite(true)

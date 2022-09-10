@@ -119,13 +119,19 @@ object Collection {
   }
 
   object Validator {
-    def apply[A](reg: String): Validator[A] = new Validator[A] {
-      override val regexp: String = reg
-      val regex: Regex            = reg.r
-      val regexIgn: Regex         = s"(?i)$reg".r
-      val regexExact: Regex       = s"^$reg$$".r
-      val regexExactIgn: Regex    = s"^(?i)$reg$$".r
+    def f(reg: String) = {
 
+      val reg3 = reg.replace("(?i)(?i)", "(?i)")
+      val reg4 = reg3.replace("^(?i)", "(?i)^")
+      reg4
+    }
+
+    def apply[A](reg: String): Validator[A] = new Validator[A] {
+      override val regexp: String                                   = f(reg)
+      val regex: Regex                                              = f(reg).r
+      val regexIgn: Regex                                           = f(s"(?i)$reg").r
+      val regexExact: Regex                                         = f(s"^$reg$$").r
+      val regexExactIgn: Regex                                      = f(s"^(?i)$reg$$").r
       override def validateIgnoreCase(a: String): Option[String]    = regexExactIgn.findFirstMatchIn(a).map(_ => a)
       override def validateCaseSensitive(a: String): Option[String] = regexExact.findFirstMatchIn(a).map(_ => a)
       def validateCaseInsensitive(a: String): Option[String]        = regexExactIgn.findFirstMatchIn(a).map(_ => a)
@@ -271,8 +277,8 @@ object Collection {
 
   implicit val validatorComment: Validator[Comments] = Validator[Comments]("""(\/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+\/)""")
 
-  implicit val validatorCreditCardVisa: Validator[CreditCardVisa]                       = Validator[CreditCardVisa]("""4[0-9]{12}(?:[0-9]{3})?""")
-  implicit val validatorCreditCardMasterCard: Validator[CreditCardMasterCard]           = Validator[CreditCardMasterCard]("""(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}""")
+  implicit val validatorCreditCardVisa: Validator[CreditCardVisa]             = Validator[CreditCardVisa]("""4[0-9]{12}(?:[0-9]{3})?""")
+  implicit val validatorCreditCardMasterCard: Validator[CreditCardMasterCard] = Validator[CreditCardMasterCard]("""(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}""")
   implicit val validatorCreditCardAmericanExpress: Validator[CreditCardAmericanExpress] = Validator[CreditCardAmericanExpress]("""3[47][0-9]{13}""")
   implicit val validatorCreditCardDinersClub: Validator[CreditCardinersClub]            = Validator[CreditCardinersClub]("""3(?:0[0-5]|[68][0-9])[0-9]{11}""")
   implicit val validatorCreditCardDiscover: Validator[CreditCardDiscover]               = Validator[CreditCardDiscover]("""6(?:011|5[0-9]{2})[0-9]{12}""")
