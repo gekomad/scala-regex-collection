@@ -1,19 +1,19 @@
 name := "scala-regex-collection"
 
-version := "2.0.1"
+version := "2.0.2"
 
-scalaVersion := "3.5.2"
+scalaVersion := "3.3.7"
 organization := "com.github.gekomad"
 
-libraryDependencies += "org.scalameta" %% "munit" % "1.0.2" % Test
+libraryDependencies += "org.scalameta" %% "munit" % "1.2.4" % Test
 scalacOptions ++= Seq("-Xfatal-warnings")
-crossScalaVersions := Seq("2.12.20", "2.13.15", "3.5.2")
+crossScalaVersions := Seq("2.12.21", "2.13.18", "3.3.7")
 
 
 //sonatype
-
-publishTo := sonatypePublishToBundle.value
-logLevel  := Level.Debug
+import xerial.sbt.Sonatype._ 
+sonatypeCredentialHost := "central.sonatype.com" 
+sonatypeRepository := "https://central.sonatype.com/api/v1/publisher"
 
 pomExtra :=
   <licenses>

@@ -1,15 +1,14 @@
 name      := "scala-regex-collection"
-publishTo := sonatypePublishTo.value
-
+ 
 import org.scalajs.linker.interface.{ESVersion, ModuleSplitStyle}
 
 lazy val scalaJs = project
   .in(file("."))
   .enablePlugins(ScalaJSPlugin)
   .settings(
-    version                         := "2.0.1",
-    scalaVersion                    := "2.13.15",
-    crossScalaVersions              := Seq("2.12.20", "2.13.15", "3.5.2"),
+    version                         := "2.0.2",
+    scalaVersion                    := "2.13.18",
+    crossScalaVersions              := Seq("2.12.21", "2.13.18", "3.3.7"),
     organization                    := "com.github.gekomad",
     scalaJSUseMainModuleInitializer := false,
     scalaJSLinkerConfig ~= (_.withESFeatures(_.withESVersion(ESVersion.ES2018))),
@@ -18,16 +17,16 @@ lazy val scalaJs = project
         .withModuleSplitStyle(ModuleSplitStyle.SmallModulesFor(List("scalaJs")))
     },
     scalacOptions ++= Seq("-Xfatal-warnings"),
-    libraryDependencies += "org.scala-js"      %%% "scalajs-dom"          % "2.8.0",
+    libraryDependencies += "org.scala-js"      %%% "scalajs-dom"          % "2.8.1",
     libraryDependencies += "io.github.cquiroz" %%% "scala-java-time"      % "2.6.0",
     libraryDependencies += "io.github.cquiroz" %%% "scala-java-time-tzdb" % "2.6.0",
-    libraryDependencies += "org.scalameta"     %%% "munit"                % "1.0.2" % Test
+    libraryDependencies += "org.scalameta"     %%% "munit"                % "1.2.0" % Test
   )
 
 //sonatype
-
-publishTo := sonatypePublishToBundle.value
-logLevel  := Level.Debug
+import xerial.sbt.Sonatype._ 
+sonatypeCredentialHost := "central.sonatype.com" 
+sonatypeRepository := "https://central.sonatype.com/api/v1/publisher"
 
 pomExtra :=
   <licenses>

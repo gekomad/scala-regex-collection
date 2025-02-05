@@ -1,6 +1,3 @@
-[![Build Status](https://travis-ci.com/gekomad/scala-regex-collection.svg?branch=master)](https://travis-ci.com/gekomad/scala-regex-collection)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.gekomad/scala-regex-collection_3/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.gekomad/scala-regex-collection_3)
-
 Scala regex collection
 =====================
 
@@ -10,7 +7,7 @@ Scala-regex-collection is a pure scala regex collection
 
 The latest version of the library is available for Scala 2.12, 2.13, 3 and ScalaJS.
 
-`libraryDependencies += "com.github.gekomad" %% "scala-regex-collection" % "2.0.1"`
+`libraryDependencies += "com.github.gekomad" %% "scala-regex-collection" % "2.0.2"`
 
 ## Using Library
 
